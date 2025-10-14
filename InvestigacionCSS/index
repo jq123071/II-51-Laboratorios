@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de CSS</title>
+    <style>
+        /* Estilos CSS para el botón con sombra */
+        .boton-con-sombra {
+            width: 200px;
+            height: 50px;
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            text-align: center;
+            line-height: 50px; /* Centra el texto verticalmente */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Sombra: 5px derecha, 5px abajo, 10px de difuminado, color negro semitransparente */
+            margin: 20px;
+        }
+
+        /* Estilo CSS para el título con sombra */
+        h1 {
+            font-size: 24px;
+            color: #333; /* Gris oscuro */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra: 2px derecha, 2px abajo, 4px de difuminado, color negro semitransparente */
+        }
+
+        /* Estilos CSS para el botón con transición */
+        .boton-transicion {
+            width: 200px;
+            height: 50px;
+            background-color: #2196F3; /* Azul */
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            transition: background-color 0.5s ease; /* Transición en background-color, duración de 0.5 segundos, con función ease */
+        }
+
+        .boton-transicion:hover {
+            background-color: #f44336; /* Rojo al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos HTML de los ejemplos -->
+    <div class="boton-con-sombra">Haz clic aquí</div>
+    
+    <h1>Título con sombra</h1>
+    
+    <div class="boton-transicion">Pasa el mouse</div>
+</body>
+</html>
