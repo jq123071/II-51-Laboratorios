@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba de CSS</title>
+    <title>CSS</title>
     <style>
         /* Estilos CSS para el botón con sombra */
         .boton-con-sombra {
@@ -36,16 +36,16 @@
         }
 
         .boton-transicion:hover {
-            background-color: #f44336; /* Rojo al pasar el mouse */
+            background-color: #ed3838; /* Rojo al pasar el mouse */
         }
     </style>
 </head>
 <body>
-    <!-- Elementos HTML de los ejemplos -->
-    <div class="boton-con-sombra">Haz clic aquí</div>
+    <!-- Elementos HTML -->
+    <div class="boton-con-sombra">clic aquí</div>
     
-    <h1>Título con sombra</h1>
+    <h1>Encabezado con sombra</h1>
     
-    <div class="boton-transicion">Pasa el mouse</div>
+    <div class="boton-transicion">Pasar el mouse</div>
 </body>
 </html>
