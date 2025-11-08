@@ -1,11 +1,55 @@
+/* Contenedor texto con borde */
 .caja {
-  padding: 10px;
   border: 1px solid #ccc;
-  transition: background-color 0.3s;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
 }
 
-.caja.color {
-  background-color: #d1ecf1;
-  color: #0c5460;
-  font-weight: bold;
+/* Cursor pointer para iconos */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .btn-primary {
+  background-color: #0d6efd;
+}
+
+body.dark-mode .btn-danger {
+  background-color: #dc3545;
+}
+
+body.dark-mode .btn-dark {
+  background-color: #333333;
+  color: white;
+  border: none;
+}
+
+body.dark-mode .btn-light {
+  background-color: #555555;
+  color: white;
+  border: none;
+}
+
+body.dark-mode #bloqueTexto {
+  border-color: #bbb;
+  color: #eee;
+  background-color: #212121;
+}
+
+/* Texto dinámico cuando se agrega clase */
+.text-primary {
+  color: #0d6efd !important;
+  font-weight: 700 !important;
+}
+
+/* Pequeña separación entre botones y elementos */
+.me-2 {
+  margin-right: 0.5rem !important;
 }
