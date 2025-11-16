@@ -13,34 +13,35 @@
 
 /* Modo oscuro */
 body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #161515;
+  color: #f6f1f1;
+}
+
+body.dark-mode .container {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #333;
+  color: #f5f2f2;
+  border-color: #555;
 }
 
 body.dark-mode .btn-primary {
   background-color: #0d6efd;
+  border-color: #0d6efd;
 }
 
-body.dark-mode .btn-danger {
-  background-color: #dc3545;
+body.dark-mode button {
+  color: #f5f0f0;
 }
 
-body.dark-mode .btn-dark {
-  background-color: #333333;
-  color: white;
-  border: none;
-}
-
-body.dark-mode .btn-light {
-  background-color: #555555;
-  color: white;
-  border: none;
-}
-
-body.dark-mode #bloqueTexto {
-  border-color: #bbb;
-  color: #eee;
-  background-color: #212121;
+body.dark-mode hr {
+  border-color: #444;
 }
 
 /* Texto dinámico cuando se agrega clase */

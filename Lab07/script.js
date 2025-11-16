@@ -47,11 +47,16 @@ $(document).ready(function () {
 
 // Alternar modo oscuro / claro con icono de luna/sol
 function alternarTema() {
-  $('body').toggleClass('dark-mode');
-  const icon = $('#tema');
-  if ($('body').hasClass('dark-mode')) {
-    icon.removeClass('fa-moon').addClass('fa-sun');
+  const body = document.body;
+  const icono = document.getElementById('tema');
+
+  body.classList.toggle('dark-mode');
+
+  if (body.classList.contains('dark-mode')) {
+    icono.classList.remove('fa-moon');
+    icono.classList.add('fa-sun');
   } else {
-    icon.removeClass('fa-sun').addClass('fa-moon');
+    icono.classList.remove('fa-sun');
+    icono.classList.add('fa-moon');
   }
 }
