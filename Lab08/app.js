@@ -1,5 +1,8 @@
 import { supabase } from "./supabaseClient.js";
 
+//=========================
+// DOM
+//=========================
 const form = document.getElementById("curso-form");
 const inputId = document.getElementById("id");
 const inputCodigo = document.getElementById("codigo");
