@@ -43,7 +43,7 @@ form.addEventListener("submit", async (e) => {
   form.reset();
 });
 
-// Agregué funcionalidad al botón Cancelar
+
 btnCancel.addEventListener("click", () => {
   editando = false;
   tituloForm.textContent = "Registrar Curso";
@@ -69,7 +69,7 @@ listaCursos.addEventListener("click", async (e) => {
 
     // 2. Mostrar en el formulario el curso cargado
     if (curso) {
-      inputId.value = curso.id; // Corregí: era curso.idCurso, pero la tabla usa 'id'
+      inputId.value = curso.id; 
       inputCodigo.value = curso.codigo;
       inputNombre.value = curso.nombre;
       inputCreditos.value = curso.creditos;
@@ -99,7 +99,7 @@ async function cargarCursos() {
     li.innerHTML = `${curso.codigo} - ${curso.nombre} [${curso.creditos} créditos]
         <button class="btn btn-danger btn-sm btn-delete float-end mx-1" data-id="${curso.id}"><i class="fa-solid fa-xmark"></i></button>
         <button class="btn btn-primary btn-sm btn-edit float-end" data-id="${curso.id}"><i class="fa-solid fa-pencil"></i></button>`;
-    listaCursos.appendChild(li); // Corregí: era lista.appendChild, pero es listaCursos
+    listaCursos.appendChild(li); 
   });
 }
 
@@ -118,7 +118,7 @@ async function eliminarCurso(id) {
   if (error) {
     console.error(error);
   }
-  cargarCursos(); // Agregué recargar la lista después de eliminar
+  cargarCursos(); 
 }
 
 async function actualizarCurso(id, codigo, nombre, creditos) {
@@ -131,7 +131,7 @@ async function actualizarCurso(id, codigo, nombre, creditos) {
   cargarCursos();
 }
 
-async function obtenerCurso(idCurso) { // Corregí el nombre: era obternerCurso
+async function obtenerCurso(idCurso) { 
   let { data: curso, error } = await supabase
     .from("Cursos")
     .select("*")
