@@ -14,6 +14,7 @@ const statusDiv = document.getElementById("status");
 const tituloForm = document.getElementById("form-title");
 let editando = false;
 let listaCursos = document.getElementById("lista");
+
 //=========================
 // Eventos
 //=========================
@@ -23,23 +24,31 @@ form.addEventListener("submit", async (e) => {
   const nombre = inputNombre.value.trim();
   const creditos = parseInt(inputCreditos.value.trim());
 
-  //Editar
+  // Editar
   if (editando) {
     const id = inputId.value; // Obtener el ID del curso a editar
-    await actualizarCurso(id, codigo, nombre, creditos); //Acutualizar
+    await actualizarCurso(id, codigo, nombre, creditos); // Actualizar
 
-    //completo la actualización
+    // Completar la actualización
     editando = false;
     tituloForm.textContent = "Registrar Curso";
     btnSave.textContent = "Guardar Curso";
     btnCancel.style.display = "none";
   }
-
-  //Insertar
+  // Insertar
   else {
     await crearCurso(codigo, nombre, creditos);
   }
 
+  form.reset();
+});
+
+// Agregué funcionalidad al botón Cancelar
+btnCancel.addEventListener("click", () => {
+  editando = false;
+  tituloForm.textContent = "Registrar Curso";
+  btnSave.textContent = "Guardar Curso";
+  btnCancel.style.display = "none";
   form.reset();
 });
 
@@ -55,14 +64,12 @@ listaCursos.addEventListener("click", async (e) => {
   if (editBtn) {
     const id = editBtn.getAttribute("data-id");
 
-    //1. Cargar el curso con el id
+    // 1. Cargar el curso con el id
+    const curso = await obtenerCurso(id);
 
-    const curso = await obternerCurso(id);
-
-    //2. mostrar en el formulario el curso cargado
-
+    // 2. Mostrar en el formulario el curso cargado
     if (curso) {
-      inputId.value = curso.idCurso;
+      inputId.value = curso.id; // Corregí: era curso.idCurso, pero la tabla usa 'id'
       inputCodigo.value = curso.codigo;
       inputNombre.value = curso.nombre;
       inputCreditos.value = curso.creditos;
@@ -89,13 +96,13 @@ async function cargarCursos() {
   cursos.forEach((curso) => {
     let li = document.createElement("li");
     li.classList.add("list-group-item");
-    //li.textContent = curso.codigo + " - " + curso.nombre;
     li.innerHTML = `${curso.codigo} - ${curso.nombre} [${curso.creditos} créditos]
         <button class="btn btn-danger btn-sm btn-delete float-end mx-1" data-id="${curso.id}"><i class="fa-solid fa-xmark"></i></button>
         <button class="btn btn-primary btn-sm btn-edit float-end" data-id="${curso.id}"><i class="fa-solid fa-pencil"></i></button>`;
-    lista.appendChild(li);
+    listaCursos.appendChild(li); // Corregí: era lista.appendChild, pero es listaCursos
   });
 }
+
 async function crearCurso(codigo, nombre, creditos) {
   const curso = { codigo, nombre, creditos };
   let { error } = await supabase.from("Cursos").insert([curso]);
@@ -111,6 +118,7 @@ async function eliminarCurso(id) {
   if (error) {
     console.error(error);
   }
+  cargarCursos(); // Agregué recargar la lista después de eliminar
 }
 
 async function actualizarCurso(id, codigo, nombre, creditos) {
@@ -123,7 +131,7 @@ async function actualizarCurso(id, codigo, nombre, creditos) {
   cargarCursos();
 }
 
-async function obternerCurso(idCurso) {
+async function obtenerCurso(idCurso) { // Corregí el nombre: era obternerCurso
   let { data: curso, error } = await supabase
     .from("Cursos")
     .select("*")
@@ -135,4 +143,5 @@ async function obternerCurso(idCurso) {
   }
   return curso;
 }
+
 cargarCursos();

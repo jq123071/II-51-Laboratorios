@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,28 +15,44 @@
   <body>
     <div class="container mt-5">
       <h1>Lista de Cursos</h1>
-      <ul id="lista" class="lista-group">
-        <li class="list-group-item">Curso 1: Introducción a la Programación</li>
+      <ul id="lista" class="list-group">
+        <!-- Ejemplo inicial corregido: Agregué clases y data-id para que funcione -->
+        <li class="list-group-item">
+          Curso 1: Introducción a la Programación
+          <div>
+            <button class="btn btn-primary btn-sm me-2 btn-edit" data-id="1"> <!-- Agregué btn-edit y data-id -->
+              <i class="fa fa-pen"></i>
+            </button>
+            <button class="btn btn-danger btn-sm btn-delete" data-id="1"> <!-- Agregué btn-delete y data-id -->
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+        </li>
       </ul>
-        <form id="curso-form" class="mt-5">
-    <h2 id="form-title">Registrar curso</h2>
+      <form id="curso-form" class="mt-5">
+        <h2 id="form-title">Registrar curso</h2> <!-- Agregué id="form-title" -->
 
-    <input type="hidden" id="idCurso" />
+        <input type="hidden" id="idCurso" />
+        <div class="mb-3">
+          <label class="form-label">Código</label>
+          <input type="text" id="codigo" required class="form-control"/>
+        </div>
 
-    <label>Código</label>
-    <input type="text" id="codigo" required />
+        <div class="mb-3">
+          <label class="form-label">Nombre del curso</label>
+          <input type="text" id="nombre" required class="form-control"/>
+        </div>
 
-    <label>Nombre del curso</label>
-    <input type="text" id="nombre" required />
+        <div class="mb-3">
+          <label class="form-label">Créditos</label>
+          <input type="number" id="creditos" required min="1" max="10" class="form-control"/>
+        </div>
 
-    <label>Créditos</label>
-    <input type="number" id="creditos" required min="1" max="10" />
+        <button type="submit" id="btn-save" class="btn btn-primary">Guardar Curso</button>
+        <button type="button" id="btn-cancel" class="btn btn-secondary" style="display:none;">Cancelar</button>
 
-    <button type="submit" id="btn-save">Guardar Curso</button>
-    <button type="button" id="btn-cancel" style="display:none;">Cancelar</button>
-
-    <div id="status"></div>
-  </form>
+        <div id="status"></div>
+      </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="module" src="app.js"></script>
